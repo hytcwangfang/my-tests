@@ -1,0 +1,8 @@
+D:\my test\hytc.chat\hytc.chat\bin\Debug\hytc.chat.exe
+D:\my test\hytc.chat\hytc.chat\bin\Debug\hytc.chat.pdb
+D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.csprojResolveAssemblyReference.cache
+D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.Form1.resources
+D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.Properties.Resources.resources
+D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.csproj.GenerateResource.Cache
+D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.exe
+D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.pdb
