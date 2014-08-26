@@ -1,0 +1,8 @@
+d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.Form1.resources
+d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.Properties.Resources.resources
+d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.UC.resources
+d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.csproj.GenerateResource.Cache
+d:\my test\hytc.QQ\hytc.QQ\bin\Debug\hytc.QQ.exe
+d:\my test\hytc.QQ\hytc.QQ\bin\Debug\hytc.QQ.pdb
+d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.exe
+d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.pdb
