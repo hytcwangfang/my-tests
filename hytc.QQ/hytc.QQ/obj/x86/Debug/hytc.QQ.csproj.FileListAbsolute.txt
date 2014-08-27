@@ -6,3 +6,5 @@ d:\my test\hytc.QQ\hytc.QQ\bin\Debug\hytc.QQ.exe
 d:\my test\hytc.QQ\hytc.QQ\bin\Debug\hytc.QQ.pdb
 d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.exe
 d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.pdb
+D:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.csprojResolveAssemblyReference.cache
+D:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.ChatFrm.resources
