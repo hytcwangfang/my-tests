@@ -8,3 +8,13 @@ d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.exe
 d:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.pdb
 D:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.csprojResolveAssemblyReference.cache
 D:\my test\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.ChatFrm.resources
+F:\my-tests\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.exe
+F:\my-tests\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.pdb
+F:\my-tests\hytc.QQ\hytc.QQ\bin\Debug\hytc.QQ.exe
+F:\my-tests\hytc.QQ\hytc.QQ\bin\Debug\hytc.QQ.pdb
+F:\my-tests\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.csprojResolveAssemblyReference.cache
+F:\my-tests\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.ChatFrm.resources
+F:\my-tests\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.Form1.resources
+F:\my-tests\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.Properties.Resources.resources
+F:\my-tests\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.UC.resources
+F:\my-tests\hytc.QQ\hytc.QQ\obj\x86\Debug\hytc.QQ.csproj.GenerateResource.Cache

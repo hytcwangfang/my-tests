@@ -55,9 +55,9 @@
             this.lab_nickName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lab_nickName.Location = new System.Drawing.Point(102, 24);
             this.lab_nickName.Name = "lab_nickName";
-            this.lab_nickName.Size = new System.Drawing.Size(47, 19);
+            this.lab_nickName.Size = new System.Drawing.Size(129, 19);
             this.lab_nickName.TabIndex = 1;
-            this.lab_nickName.Text = "温迪";
+            this.lab_nickName.Text = "192.168.1.33";
             // 
             // lab_shuoshuo
             // 
@@ -196,6 +196,8 @@
             this.Controls.Add(this.lab_shuoshuo);
             this.Controls.Add(this.lab_nickName);
             this.Controls.Add(this.pb_headImg);
+            this.MaximumSize = new System.Drawing.Size(257, 555);
+            this.MinimumSize = new System.Drawing.Size(257, 555);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

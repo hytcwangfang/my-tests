@@ -32,12 +32,34 @@ namespace hytc.QQ
             }
         }
 
+        public event EventHandler myDBclick;
+
         
 
         private void UC_Load(object sender, EventArgs e)
         {
             //UC ucli = new UC();
             
+        }
+
+        private void lab_nickName_DoubleClick(object sender, EventArgs e)
+        {
+            this.myDBclick(this, e);
+        }
+
+        private void lab_shuoshuo_DoubleClick(object sender, EventArgs e)
+        {
+            this.myDBclick(this, e);
+        }
+
+        private void pb_headImg_DoubleClick(object sender, EventArgs e)
+        {
+            this.myDBclick(this, e);
+        }
+
+        private void UC_DoubleClick(object sender, EventArgs e)
+        {
+            this.myDBclick(sender, e);
         }
     }
 }

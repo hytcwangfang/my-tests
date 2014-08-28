@@ -22,10 +22,16 @@ namespace hytc.QQ
         }
         public string getip()
         {
-            IPHostEntry ipe = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipa = ipe.AddressList[0];
-            return ipa.ToString();
-
+            IPAddress[] ips = Dns.GetHostAddresses(Dns.GetHostName());
+            IPAddress myip = ips[0];
+            foreach (IPAddress ip in ips)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    myip = ip;
+                }
+            }
+            return myip.ToString();
         }
 
         public void ReceiveData()
@@ -43,54 +49,88 @@ namespace hytc.QQ
                 switch (receidata)
                 {
                     case "LOGIN":
-                        Friend friend = new Friend();
-                        friend.NickName = split[1];
-                        friend.ShuoShuo = split[2];
-                        int curindex = Convert.ToInt32(split[3]);
-                        if (curindex < 0 || curindex >= this.mainfrm.img_list.Images.Count)
+                        //"LOGIN|" + me.NickName + "|" + me.HeadImg + "|" + me.ShuoShuo
+                        if (opsiteip.ToString() == this.getip())
                         {
-                            friend.HeadImg = 1;
+                            continue;
                         }
                         else
                         {
-                            friend.HeadImg = curindex;
-                        }
-                        friend.ip = opsiteip;
-                        object[] paras = new object[1];
-                        paras[0] = friend;
-                        hytc.QQ.Form1.UCdelegate d = new hytc.QQ.Form1.UCdelegate(this.mainfrm.AddFriend);
-                        this.mainfrm.Invoke(d, paras);
+                            Friend friend = new Friend();
+                            friend.NickName = split[1];
+                            friend.ShuoShuo = split[3];
+                            int curindex = Convert.ToInt32(split[2]);
+                            if (curindex < 0 || curindex >= this.mainfrm.img_list.Images.Count)
+                            {
+                                friend.HeadImg = 0;
+                            }
+                            else
+                            {
+                                friend.HeadImg = curindex;
+                            }
+                            friend.ip = opsiteip;
+                            object[] paras = new object[1];
+                            paras[0] = friend;
+                            hytc.QQ.Form1.UCdelegate d = new hytc.QQ.Form1.UCdelegate(this.mainfrm.AddFriend);
+                            this.mainfrm.Invoke(d, paras);
 
-                        //回发
-                        UdpClient udp = new UdpClient();
-                        string nickname = this.mainfrm.me.NickName;
-                        string shuoshuo = this.mainfrm.me.ShuoShuo;
-                        int headimg = this.mainfrm.me.HeadImg;
-                        // headimg =  this.img_list.Images[7];
-                        //int headindex = ; //获取自身头像的下标？？？
-                        string content = "ALSOON|" + nickname + "|" + shuoshuo + "|" + headimg; //要改为自身头像的下标
-                        byte[] alsoonbytes = Encoding.Default.GetBytes(content);
-                        IPEndPoint iep = new IPEndPoint(IPAddress.Parse("255.255.255.255"), 9527);
-                        udp.Send(alsoonbytes, alsoonbytes.Length, new IPEndPoint(IPAddress.Parse(this.getip()), 9527));
+                            //回发
+                            UdpClient udp = new UdpClient();
+                            string nickname = this.mainfrm.me.NickName;
+                            string shuoshuo = this.mainfrm.me.ShuoShuo;
+                            int headimg = this.mainfrm.me.HeadImg;
+                            string content = "ALSOON|" + nickname + "|" + headimg + "|" + shuoshuo; //要改为自身头像的下标
+                            byte[] alsoonbytes = Encoding.Default.GetBytes(content);
+                            IPEndPoint iep = new IPEndPoint(IPAddress.Parse("255.255.255.255"), 9527);
+                            udp.Send(alsoonbytes, alsoonbytes.Length, new IPEndPoint(opsiteip, 9527));
+                        }
                         break;
                     case "ALSOON":
-                        Friend forefriend = new Friend();
-                        forefriend.NickName = split[1];
-                        forefriend.ShuoShuo = split[2];
-                        int index = Convert.ToInt32(split[3]);
-                        if (index < 0 || index >= this.mainfrm.img_list.Images.Count)
+                        if (opsiteip.ToString() == this.getip())
                         {
-                            forefriend.HeadImg = 1;
+                            continue;
                         }
                         else
                         {
-                            forefriend.HeadImg = index;
+                            Friend forefriend = new Friend();
+                            forefriend.NickName = split[1];
+                            forefriend.ShuoShuo = split[3];
+                            int index = Convert.ToInt32(split[2]);
+                            if (index < 0 || index >= this.mainfrm.img_list.Images.Count)
+                            {
+                                forefriend.HeadImg = 0;
+                            }
+                            else
+                            {
+                                forefriend.HeadImg = index;
+                            }
+                            forefriend.ip = opsiteip;
+                            object[] foreparas = new object[1];
+                            foreparas[0] = forefriend;
+                            hytc.QQ.Form1.UCdelegate fored = new hytc.QQ.Form1.UCdelegate(this.mainfrm.AddFriend);
+                            this.mainfrm.Invoke(fored, foreparas);
                         }
-                        forefriend.ip = opsiteip;
-                        object[] foreparas = new object[1];
-                        foreparas[0] = forefriend;
-                        hytc.QQ.Form1.UCdelegate fored = new hytc.QQ.Form1.UCdelegate(this.mainfrm.AddFriend);
-                        this.mainfrm.Invoke(fored, foreparas);
+                        break;
+                    case "LOGOUT":
+                        if (opsiteip.ToString() == this.getip())
+                        {
+                            return;
+                        }
+                        int logoutid = 0;
+                        foreach(UC ucli in this.mainfrm.Pnlist.Controls)
+                        {
+                            if (opsiteip.ToString() == ucli.Friend.ip.ToString())
+                            {
+                                this.mainfrm.Pnlist.Controls.Remove(ucli);
+                                break;
+                            }
+                            logoutid++;//最终得到移除控件的下标
+                        }
+                        //将在已移除的用户控件的下方用户控件往上移动
+                        for (int i = logoutid; i < this.mainfrm.Pnlist.Controls.Count; i++)
+                        {
+                            this.mainfrm.Pnlist.Controls[i].Top = i * this.mainfrm.Pnlist.Controls[i].Height;
+                        }
                         break;
                     case "TALK":
                         // "Talk|" + this.txt_history.Text + "|" + mylisten.getip();

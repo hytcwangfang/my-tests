@@ -18,7 +18,7 @@ namespace hytc.QQ
 
         //private Friend me;
 
-        private Listen mylisten;
+        //private Listen mylisten;
 
         public ChatFrm()
         {
@@ -31,11 +31,10 @@ namespace hytc.QQ
         //    mylisten = listen;
         //    me = m;
         //}
-        public ChatFrm(Friend f, Listen listen)
+        public ChatFrm(Friend f)
         {
             InitializeComponent();
             curfriend = f;
-            mylisten = listen;
         }
       
 
@@ -51,7 +50,7 @@ namespace hytc.QQ
             IPAddress curip = this.curfriend.ip;
             IPEndPoint iep =new IPEndPoint(curip,9527);
             //string content = "Talk|" + me.NickName + "|" + me.ShuoShuo + "|" + me.HeadImg + "|" + this.txt_history.Text + "|" + mylisten.getip();
-            string content = "Talk|" + this.txt_history.Text + "|" + mylisten.getip();
+            string content = "Talk|" + this.txt_history.Text;
             byte[] bytes = Encoding.Default.GetBytes(content);
             udpclient.Send(bytes, bytes.Length, iep);
             this.txt_history.Text += this.txt_send.Text;

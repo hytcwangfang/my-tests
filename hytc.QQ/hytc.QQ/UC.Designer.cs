@@ -44,6 +44,7 @@
             this.pb_headImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_headImg.TabIndex = 0;
             this.pb_headImg.TabStop = false;
+            this.pb_headImg.DoubleClick += new System.EventHandler(this.pb_headImg_DoubleClick);
             // 
             // lab_nickName
             // 
@@ -53,6 +54,7 @@
             this.lab_nickName.Size = new System.Drawing.Size(41, 12);
             this.lab_nickName.TabIndex = 1;
             this.lab_nickName.Text = "label1";
+            this.lab_nickName.DoubleClick += new System.EventHandler(this.lab_nickName_DoubleClick);
             // 
             // lab_shuoshuo
             // 
@@ -62,6 +64,7 @@
             this.lab_shuoshuo.Size = new System.Drawing.Size(41, 12);
             this.lab_shuoshuo.TabIndex = 2;
             this.lab_shuoshuo.Text = "label2";
+            this.lab_shuoshuo.DoubleClick += new System.EventHandler(this.lab_shuoshuo_DoubleClick);
             // 
             // UC
             // 
@@ -74,6 +77,7 @@
             this.Name = "UC";
             this.Size = new System.Drawing.Size(210, 66);
             this.Load += new System.EventHandler(this.UC_Load);
+            this.DoubleClick += new System.EventHandler(this.UC_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pb_headImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
