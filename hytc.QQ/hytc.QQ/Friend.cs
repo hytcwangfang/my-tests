@@ -15,5 +15,7 @@ namespace hytc.QQ
         public string NickName { get; set; }
 
         public string ShuoShuo { get; set; }
+
+        //public ChatFrm chatfrm { get; set; }
     }
 }

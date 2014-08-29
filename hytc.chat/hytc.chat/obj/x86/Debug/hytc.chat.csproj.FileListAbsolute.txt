@@ -6,3 +6,5 @@ D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.Properties.Resources.reso
 D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.csproj.GenerateResource.Cache
 D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.exe
 D:\my test\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.pdb
+F:\my-tests\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.exe
+F:\my-tests\hytc.chat\hytc.chat\obj\x86\Debug\hytc.chat.pdb

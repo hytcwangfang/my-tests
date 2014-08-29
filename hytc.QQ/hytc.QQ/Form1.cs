@@ -21,6 +21,8 @@ namespace hytc.QQ
 
         public Friend me;
 
+        public List<ChatFrm> listChatFrm = new List<ChatFrm>();
+
         private Panel pnlist;
 
         public Panel Pnlist
@@ -42,14 +44,30 @@ namespace hytc.QQ
             this.pn_friendlist.Controls.Add(ucli);
             this.Pnlist = this.pn_friendlist;//为Pnlist重新赋值（承上）
             ucli.myDBclick += new EventHandler(ucli_myDBclick);
+
+            ChatFrm curchatfrm = new ChatFrm(f);
+            listChatFrm.Add(curchatfrm);
         }
 
         void ucli_myDBclick(object sender, EventArgs e)
         {
             UC ucf = (UC)sender;
             Friend f = ucf.Friend;
-            ChatFrm chatfrm = new ChatFrm(f);
-            chatfrm.Show();
+            for (int i = 0; i < listChatFrm.Count; i++)
+            {
+                if (f.ip.ToString() == listChatFrm[i].curfriend.ip.ToString())
+                {
+                    if (listChatFrm[i].isopen == false)
+                    {
+                        listChatFrm[i].Show();
+                        listChatFrm[i].isopen = true;
+                    }
+                    else
+                    {
+                        listChatFrm[i].Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width, Screen.PrimaryScreen.WorkingArea.Height - this.Height);
+                    }
+                }
+            }
             //throw new NotImplementedException();
         }
 
@@ -66,6 +84,7 @@ namespace hytc.QQ
 
             //上线通知
             UdpClient udp = new UdpClient();
+            this.lab_nickName.Text = this.listen.getip();
             me.NickName = this.lab_nickName.Text;
             me.ShuoShuo = this.lab_shuoshuo.Text;
             me.HeadImg = 4;

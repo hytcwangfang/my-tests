@@ -14,11 +14,21 @@ namespace hytc.QQ
 {
     public partial class ChatFrm : Form
     {
-        private Friend curfriend;
+        public Friend curfriend;
 
-        //private Friend me;
+        public bool isopen = false;
 
-        //private Listen mylisten;
+        private string history = "";
+
+        public string History
+        {
+            get { return history; }
+            set
+            {
+                history = value;
+                this.txt_history.Text = value;
+            }
+        }
 
         public ChatFrm()
         {
@@ -41,20 +51,29 @@ namespace hytc.QQ
         private void ChatFrm_Load(object sender, EventArgs e)
         {
             this.Text = curfriend.NickName;
+            this.txt_history.Text = history;
             
         }
 
         private void btn_send_Click(object sender, EventArgs e)
         {
+            //ChatFrm curfrm = (ChatFrm)sender;
             UdpClient udpclient = new UdpClient();
             IPAddress curip = this.curfriend.ip;
             IPEndPoint iep =new IPEndPoint(curip,9527);
-            //string content = "Talk|" + me.NickName + "|" + me.ShuoShuo + "|" + me.HeadImg + "|" + this.txt_history.Text + "|" + mylisten.getip();
-            string content = "Talk|" + this.txt_history.Text;
+
+            string content = "MSG|" + this.txt_send.Text;
             byte[] bytes = Encoding.Default.GetBytes(content);
             udpclient.Send(bytes, bytes.Length, iep);
-            this.txt_history.Text += this.txt_send.Text;
+            this.txt_history.Text += "我说：" + this.txt_send.Text + "\r\n";
             this.txt_send.Text = "";
         }
+       
+
+        private void ChatFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.isopen = false;
+        }
+       
     }
 }

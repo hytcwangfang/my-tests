@@ -126,18 +126,37 @@ namespace hytc.QQ
                             }
                             logoutid++;//最终得到移除控件的下标
                         }
-                        //将在已移除的用户控件的下方用户控件往上移动
+                        //将在已移除的下方用户控件往上移动
                         for (int i = logoutid; i < this.mainfrm.Pnlist.Controls.Count; i++)
                         {
                             this.mainfrm.Pnlist.Controls[i].Top = i * this.mainfrm.Pnlist.Controls[i].Height;
                         }
                         break;
-                    case "TALK":
-                        // "Talk|" + this.txt_history.Text + "|" + mylisten.getip();
-                        MessageBox.Show("发来新消息");
-                        string talkcontent = split[1];
-                        IPAddress hisip = IPAddress.Parse(split[2]);
-                        ChatFrm hischat = new ChatFrm();
+                    case "MSG":
+                        // "MSG|" + this.txt_history.Text;
+                        //MessageBox.Show("发来新消息");
+                        for (int i = 0; i < this.mainfrm.listChatFrm.Count; i++)
+                        {
+                            if (opsiteip.ToString() == this.mainfrm.listChatFrm[i].curfriend.ip.ToString())
+                            {
+                                //找到对应ip，提示新消息//?打开对应聊天窗口
+                                if (this.mainfrm.listChatFrm[i].isopen == true)
+                                {
+                                    this.mainfrm.listChatFrm[i].History += split[1] + "\r\n";
+                                }
+                                else
+                                {
+                                    this.mainfrm.listChatFrm[i].isopen = true;
+                                    //this.mainfrm.listChatFrm[i].Visible = false;
+                                    //this.mainfrm.listChatFrm[i].ShowInTaskbar = true;
+                                    this.mainfrm.listChatFrm[i].Text = "[有新消息]" + this.mainfrm.listChatFrm[i].curfriend.NickName;
+                                    this.mainfrm.listChatFrm[i].History += this.mainfrm.listChatFrm[i].curfriend.NickName + "说：" + split[1] + "\r\n";
+                                    this.mainfrm.listChatFrm[i].Show();
+                                }
+                                
+                                
+                            }
+                        }
                         break;
                         
                     default:

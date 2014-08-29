@@ -68,6 +68,7 @@
             this.Controls.Add(this.txt_history);
             this.Name = "ChatFrm";
             this.Text = "ChatFrm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChatFrm_FormClosed);
             this.Load += new System.EventHandler(this.ChatFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
